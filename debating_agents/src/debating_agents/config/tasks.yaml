@@ -1,0 +1,48 @@
+propose:
+  description: >
+    You are proposing the motion: {motion}.
+    {% if round_number > 1 %}
+    This is round {round_number} of the debate. Previous rounds context: {previous_context}
+    Build upon the previous arguments and strengthen your position.
+    {% endif %}
+    Come up with a clear argument in favor of the motion.
+    Be very convincing.
+  expected_output: >
+    Your clear argument in favor of the motion, in a concise manner.
+    {% if round_number > 1 %}
+    Address any counterarguments from previous rounds and strengthen your position.
+    {% endif %}
+  agent: debater
+  output_file: output/propose_round_{round_number}.md
+
+oppose:
+  description: >
+    You are in opposition to the motion: {motion}.
+    {% if round_number > 1 %}
+    This is round {round_number} of the debate. Previous rounds context: {previous_context}
+    Build upon the previous arguments and strengthen your position.
+    {% endif %}
+    Come up with a clear argument against the motion.
+    Be very convincing.
+  expected_output: >
+    Your clear argument against the motion, in a concise manner.
+    {% if round_number > 1 %}
+    Address any counterarguments from previous rounds and strengthen your position.
+    {% endif %}
+  agent: opponent
+  output_file: output/oppose_round_{round_number}.md
+
+decide:
+  description: >
+    Review the arguments presented by the debaters and decide which side is more convincing.
+    {% if round_number > 1 %}
+    This is round {round_number} of the debate. Previous rounds context: {previous_context}
+    Consider the evolution of arguments across all rounds.
+    {% endif %}
+  expected_output: >
+    Your decision on which side is more convincing, and why.
+    {% if round_number > 1 %}
+    Include analysis of how arguments developed across rounds.
+    {% endif %}
+  agent: judge
+  output_file: output/decide_round_{round_number}.md
